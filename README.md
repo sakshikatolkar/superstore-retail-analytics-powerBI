@@ -26,7 +26,9 @@ An overview of how sales move through the year, where orders come from, and how 
 
 ![Overall Retail Performance dashboard](images/dashboard2_overall_retail_performance.png)
 
-The "big picture" view: total sales, quantity and number of cities served, plus how revenue splits across categories and customer segments, and how profit trends month by month across four years. This one was built on the original Kaggle Superstore file (2014–2017), so the totals differ from the other two dashboards.
+The "big picture" view: total sales, quantity and number of cities served, plus how revenue splits across categories and customer segments, and how profit trends month by month across four years. The region buttons at the top filter the whole page.
+
+This one was built on the original Kaggle Superstore file (2014–2017), so the totals differ from the other two dashboards.
 
 ### 3. Product Portfolio & Regional Profitability
 
@@ -38,6 +40,12 @@ The more strategic view, and probably the most interesting one.
 - **Waterfall:** how each region adds up to total company profit, with the regional average marked
 - **Sankey:** how sales flow from category down to sub-category
 - **Chord diagram:** how sales are spread across sub-categories
+
+The `.pbix` file for this dashboard also has a few extra pages we explored along the way:
+
+- Shipping speed vs customer returns
+- A radar chart comparing customer segments on sales, profit margin, delivery speed and return rate
+- Box plots of delivery time by shipping mode, to show the spread and outliers
 
 ---
 
@@ -58,7 +66,9 @@ The more strategic view, and probably the most interesting one.
 
 ```
 ├── dashboards/
-│   ├── Geographic_Regional_Sales_Dynamics.pbix          # Dashboard 1 (final)
+│   ├── Dashboard1_Sales_Geography_Customer_Behavior.pbix
+│   ├── Dashboard2_Overall_Retail_Performance.pbix
+│   ├── Dashboard3_Product_Portfolio_Profitability.pbix
 │   └── Superstore_Retail_Performance_Analyzer_draft.pbix # early draft we started from
 ├── data/
 │   ├── raw/SuperStore_Sales_Dataset.csv
@@ -73,15 +83,13 @@ The more strategic view, and probably the most interesting one.
 
 If you just want the full story, start with **`reports/IS525_Final_Project_Report.pdf`**. It walks through each dashboard, who it's for, and what we learned while building it.
 
-> Only the `.pbix` files for Dashboard 1 and the early draft are in this repo. Dashboards 2 and 3 were built separately by teammates, so they appear here as screenshots and in the report.
-
 ---
 
 ## The data
 
 The main dataset has **5,901 order lines** (about 3,000 orders) from **2019 and 2020** across 49 US states. Each row has the order and ship dates, ship mode, customer segment, location, product category and sub-category, sales, quantity, profit, returns and payment mode.
 
-The original Kaggle Superstore dataset is here: https://www.kaggle.com/datasets/vivek468/superstore-dataset-final/data
+Dashboards 1 and 3 use this dataset. Dashboard 2 uses the original Kaggle Superstore dataset (about 10,000 order lines from 2014–2017), which isn't included here, but you can download it from Kaggle: https://www.kaggle.com/datasets/vivek468/superstore-dataset-final/data
 
 **Cleaning (done in Excel and Power Query):**
 - Converted the order and ship dates from day/month to a consistent month/day/year format so Power BI reads them correctly
@@ -103,6 +111,6 @@ Our first versions were pretty crowded. After feedback from classmates and a few
 
 ## Opening the files
 
-You'll need [Power BI Desktop](https://www.microsoft.com/power-platform/products/power-bi/desktop) (free, Windows only) to open the `.pbix` files. If Power BI asks you to locate the data source, point it to the CSV in `data/cleaned/`.
+You'll need [Power BI Desktop](https://www.microsoft.com/power-platform/products/power-bi/desktop) (free, Windows only) to open the `.pbix` files. The data is saved inside each file, so the dashboards open and work as they are. You only need the source files if you want to refresh the data: point Dashboards 1 and 3 to the CSV in `data/cleaned/`, and Dashboard 2 to the Kaggle file linked above.
 
 If you're on a Mac or just want a quick look, the screenshots above and the PDFs in `reports/` cover everything.
